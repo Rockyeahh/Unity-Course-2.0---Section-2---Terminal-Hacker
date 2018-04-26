@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Hacker : MonoBehaviour {
 
-	// Use this for initialization
 	void Start () {
-        //ShowMainMenu(words);
         ShowMainMenu("Hello Ben");
     }
 
@@ -20,9 +18,12 @@ public class Hacker : MonoBehaviour {
         Terminal.WriteLine("Press 3 Money Corp Server");
         Terminal.WriteLine("Choose a target:");
     }
+
+    void OnUserInput(string input)
+    {
+        print(input == "1"); // prints whatever the string is. Somehow it only does this after you hit return. Why?
+                             // print if the input or string is the same as 1. It could and should be done as a boolean because it deals in true and false.
+                             // It knows how to print true and fals because it is a core part of ==.
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
