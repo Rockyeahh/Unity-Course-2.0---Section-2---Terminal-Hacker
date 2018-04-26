@@ -30,19 +30,21 @@ public class Hacker : MonoBehaviour {
 
     void OnUserInput(string input)
     {
-      //  if (input == "1")
-      //  {
-       //     print("You chose level 1");
-           // print(input == "1"); // prints whatever the string is. Somehow it only does this after you hit return. Why?
-                                 // print if the input or string is the same as 1. It could and should be done as a boolean because it deals in true and false.
-                                 // It knows how to print true and false because it is a core part of ==.
-       // }
 
-        if (input == "menu")
+        if (input == "menu") // We can always go directly to the main menu if we need/want to.
         {
             ShowMainMenu();
-        } // TODO: Handle differently depending on the screen.
-        else if (input == "1")
+        }
+        else if (currentScreen == Screen.MainMenu)
+        {
+            RunMainMenu(input);
+        }
+      
+    }
+
+    void RunMainMenu(string input)
+    {
+        if (input == "1")
         {
             level = 1;
             StartGame();
@@ -61,7 +63,8 @@ public class Hacker : MonoBehaviour {
         {
             Terminal.WriteLine("Good morning, Dave.");
         }
-        else {
+        else
+        {
             Terminal.WriteLine("Please choose a valid level Dave."); // if they don't pick 1, 2, 3, menu or HAL.
         }
     }
