@@ -7,13 +7,17 @@ public class Hacker : MonoBehaviour {
 
     // Game state.
     int level;
+    enum Screen {MainMenu, Password, Win};
+    Screen currentScreen = Screen.MainMenu; // Declares a variable to use in the class. Then it intializes it with a new value by using Screen.MainMenu, so that it starts at the main menu.
 
 	void Start () {
         ShowMainMenu();
+        // I could also set Screen.MainMenu here.
     }
 
     void ShowMainMenu() // The parameter is used so that it is used.
     {
+        currentScreen = Screen.MainMenu;
         Terminal.ClearScreen();
         //Terminal.WriteLine(greeting); // It knows greeting is a string because of the string in the above line. The above greeting in ShowMainMenu(string greeting) was removed.
         Terminal.WriteLine("Hello, Dave.");
@@ -37,7 +41,8 @@ public class Hacker : MonoBehaviour {
         if (input == "menu")
         {
             ShowMainMenu();
-        } else if (input == "1")
+        } // TODO: Handle differently depending on the screen.
+        else if (input == "1")
         {
             level = 1;
             StartGame();
@@ -63,6 +68,9 @@ public class Hacker : MonoBehaviour {
 
     private void StartGame()
     {
+        // He placed currentScreen = Screen.Password; here, which makes it so that you don't need repeated code above.
+        currentScreen = Screen.Password;
         Terminal.WriteLine("You have chosen level " + level);
+        Terminal.WriteLine("Please enter your password: ");
     }
 }
