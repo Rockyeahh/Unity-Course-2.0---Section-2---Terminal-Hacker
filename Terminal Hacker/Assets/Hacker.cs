@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class Hacker : MonoBehaviour {
 
+    //Game configuration data.
+    string[] level1Passwords = { "Password", "I'm Smart", "Mistress1", "Mistress2", "Dungeon" };
+    string[] level2Passwords = { "Queen Of The Fools", "Jeeves", "Cliff Lover", "Bloody Church Again", "Spider Prince" };
+    string[] level3Passwords = { "Stock Market AI", "Cayman Islands", "Richer Today, Richer Tomorrow", "Guernsey", "Virgin Islands" };
+
     // Game state.
     int level;
     enum Screen {MainMenu, Password, Win};
@@ -52,14 +57,14 @@ public class Hacker : MonoBehaviour {
         {
             level = 1;
             StartGame();
-            password = "Mistress1";
-            Terminal.WriteLine("Hint: stressiM1");
+            password = level1Passwords[0]; // TODO Make it random later. I think he wants the password you have to work out random.
+            Terminal.WriteLine("Hint: sswordPa"); // TODO This text hint would need to follow the correct password as it is chosen from the array.
         }
         else if (input == "2")
         {
             level = 2;
             StartGame();
-            password = "Queen Of The Fools";
+            password = level2Passwords[0];
             Terminal.WriteLine("Hint: sloof heT fuQeen O");
         }
         else if (input == "3")
