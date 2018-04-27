@@ -53,26 +53,33 @@ public class Hacker : MonoBehaviour {
 
     void RunMainMenu(string input)
     {
-        if (input == "1")
+        bool isValidLevelNumber = (input == "1" || input == "2");
+        if (isValidLevelNumber)
         {
-            level = 1;
-            StartGame();
-            password = level1Passwords[0]; // TODO Make it random later. I think he wants the password you have to work out random.
-            Terminal.WriteLine("Hint: sswordPa"); // TODO This text hint would need to follow the correct password as it is chosen from the array.
-        }
-        else if (input == "2")
-        {
-            level = 2;
-            StartGame();
-            password = level2Passwords[0];
-            Terminal.WriteLine("Hint: sloof heT fuQeen O");
-        }
-        else if (input == "3")
-        {
-            level = 3;
+            level = int.Parse(input); // What is Parse? Why use it?
             StartGame();
         }
-        else if (input == "HAL")
+
+      //  if (input == "1")
+     //   {
+      //      level = 1;
+     //       StartGame();
+     //       password = level1Passwords[0]; // TODO Make it random later. I think he wants the password you have to work out random.
+     //       Terminal.WriteLine("Hint: sswordPa"); // TODO This text hint would need to follow the correct password as it is chosen from the array.
+      //  }
+      //  else if (input == "2")
+      //  {
+      //      level = 2;
+      //      StartGame();
+      //      password = level2Passwords[0];
+      //      Terminal.WriteLine("Hint: sloof heT fuQeen O");
+      //  }
+      //  else if (input == "3")
+      //  {
+      //      level = 3;
+      //      StartGame();
+     //   }
+        else if (input == "HAL") // Easter egg.
         {
             Terminal.WriteLine("Good morning, Dave.");
         }
@@ -86,7 +93,20 @@ public class Hacker : MonoBehaviour {
     {
         // He placed currentScreen = Screen.Password; here, which makes it so that you don't need repeated code above.
         currentScreen = Screen.Password;
-        Terminal.WriteLine("You have chosen level " + level);
+        //Terminal.WriteLine("You have chosen level " + level);
+        Terminal.ClearScreen();
+        switch (level)
+        {
+            case 1: // What is case?
+                password = level1Passwords[0];
+                    break; // Needed to complete the switch statement.
+            case 2:
+                password = level2Passwords[1];
+                    break;
+            default:
+                Debug.LogError("Panic! This an invalid level number.");
+                break;
+        }
         Terminal.WriteLine("Please enter your password: ");
     }
 
