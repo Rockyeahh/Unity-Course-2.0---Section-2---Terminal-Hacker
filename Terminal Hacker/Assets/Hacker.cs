@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Hacker : MonoBehaviour {
 
@@ -53,32 +50,13 @@ public class Hacker : MonoBehaviour {
 
     void RunMainMenu(string input)
     {
-        bool isValidLevelNumber = (input == "1" || input == "2");
+        bool isValidLevelNumber = (input == "1" || input == "2" || input == "3");
         if (isValidLevelNumber)
         {
             level = int.Parse(input); // What is Parse? Why use it?
             StartGame();
         }
 
-      //  if (input == "1")
-     //   {
-      //      level = 1;
-     //       StartGame();
-     //       password = level1Passwords[0]; // TODO Make it random later. I think he wants the password you have to work out random.
-     //       Terminal.WriteLine("Hint: sswordPa"); // TODO This text hint would need to follow the correct password as it is chosen from the array.
-      //  }
-      //  else if (input == "2")
-      //  {
-      //      level = 2;
-      //      StartGame();
-      //      password = level2Passwords[0];
-      //      Terminal.WriteLine("Hint: sloof heT fuQeen O");
-      //  }
-      //  else if (input == "3")
-      //  {
-      //      level = 3;
-      //      StartGame();
-     //   }
         else if (input == "HAL") // Easter egg.
         {
             Terminal.WriteLine("Good morning, Dave.");
@@ -91,18 +69,20 @@ public class Hacker : MonoBehaviour {
 
     void StartGame()
     {
-        // He placed currentScreen = Screen.Password; here, which makes it so that you don't need repeated code above.
         currentScreen = Screen.Password;
         //Terminal.WriteLine("You have chosen level " + level);
         Terminal.ClearScreen();
         switch (level)
         {
             case 1: // What is case?
-                password = level1Passwords[0];
-                    break; // Needed to complete the switch statement.
+                password = level1Passwords[Random.Range(0, level1Passwords.Length)]; // Length used like this makes it grab the max. No idea why or how it does that.
+                break; // Needed to complete the switch statement.
             case 2:
-                password = level2Passwords[1];
-                    break;
+                password = level2Passwords[Random.Range(0, level2Passwords.Length)];
+                break;
+            case 3:
+                password = level3Passwords[Random.Range(0, level3Passwords.Length)];
+                break;
             default:
                 Debug.LogError("Panic! This an invalid level number.");
                 break;
