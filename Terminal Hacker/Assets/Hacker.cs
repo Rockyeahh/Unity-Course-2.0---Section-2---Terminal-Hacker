@@ -94,12 +94,61 @@ public class Hacker : MonoBehaviour {
     {
         if (input == password)
         {
-            Terminal.WriteLine("Congratulations, Dave.");
-        } else
+            DisplayWinScreen();
+        }
+        else
         {
             Terminal.WriteLine("Incorrect. Try again, Dave.");
             // Could call Start Game again from here.
         }
     }
 
+    void DisplayWinScreen()
+    {
+        currentScreen = Screen.Win;
+        Terminal.ClearScreen();
+        ShowLevelReward();
+    }
+
+    void ShowLevelReward()
+    {
+        switch (level)
+        {
+            case 1:
+        Terminal.WriteLine("Congratulations, Dave.");
+                // Write line allows for this ASCII art as a hack but it's not the normal way that you would it into your game. You'd be better off making it with the Unity UI.
+                Terminal.WriteLine(@"
+
+-_-
+
+
+                                   ");
+                break;
+            case 2:
+                Terminal.WriteLine("Just what do you think you're doing, Dave?");
+                Terminal.WriteLine(@"
+
+^    ^    ^   ^
+| | | | | | | |
+ * * * * * * * 
+| | | | | | | |
+|_____________|
+
+                                   ");
+                break;
+            case 3:
+                Terminal.WriteLine("Dave, stop. Stop, will you? Stop, Dave. Will you stop, Dave? Stop, Dave. I'm afraid. ");
+                Terminal.WriteLine(@"
+
+$$$$$$$
+
+
+                                   ");
+                break;
+            default:
+                Debug.LogError("Panic! This is not a valid win state.");
+                break;
+        }
+
+    }
 }
