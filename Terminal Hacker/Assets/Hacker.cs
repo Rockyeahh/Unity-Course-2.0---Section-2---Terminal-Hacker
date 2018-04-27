@@ -23,6 +23,11 @@ public class Hacker : MonoBehaviour {
         currentScreen = Screen.MainMenu;
         Terminal.ClearScreen();
         //Terminal.WriteLine(greeting); // It knows greeting is a string because of the string in the above line. The above greeting in ShowMainMenu(string greeting) was removed.
+        MainMenuTextDisplay();
+    }
+
+    private static void MainMenuTextDisplay()
+    {
         Terminal.WriteLine("Hello, Dave.");
         Terminal.WriteLine("Welcome to Terminal Hacker, human.");
         Terminal.WriteLine("Press 1 An MPs email passwords");
@@ -54,7 +59,7 @@ public class Hacker : MonoBehaviour {
         if (isValidLevelNumber)
         {
             level = int.Parse(input); // What is Parse? Why use it?
-            StartGame();
+            AskForPassword();
         }
 
         else if (input == "HAL") // Easter egg.
@@ -64,14 +69,21 @@ public class Hacker : MonoBehaviour {
         else
         {
             Terminal.WriteLine("Please choose a valid level Dave."); // if they don't pick 1, 2, 3, menu or HAL.
+            Terminal.WriteLine("Type menu to return to the Menu.");
         }
     }
 
-    void StartGame()
+    void AskForPassword()
     {
         currentScreen = Screen.Password;
-        //Terminal.WriteLine("You have chosen level " + level);
         Terminal.ClearScreen();
+        Terminal.WriteLine("Type menu to return to the Menu.");
+        SetRandomPassword();
+        Terminal.WriteLine("Enter your password:                   Hint: " + password.Anagram());
+    }
+
+    void SetRandomPassword()
+    {
         switch (level)
         {
             case 1: // What is case?
@@ -87,7 +99,6 @@ public class Hacker : MonoBehaviour {
                 Debug.LogError("Panic! This an invalid level number.");
                 break;
         }
-        Terminal.WriteLine("Please enter your password: ");
     }
 
     void Password(string input)
@@ -98,8 +109,8 @@ public class Hacker : MonoBehaviour {
         }
         else
         {
-            Terminal.WriteLine("Incorrect. Try again, Dave.");
-            // Could call Start Game again from here.
+            AskForPassword();
+            // We could call Start Game again from here. = I was right as he did that later in section 2. (start game was changed to ask for password.)
         }
     }
 
@@ -108,6 +119,7 @@ public class Hacker : MonoBehaviour {
         currentScreen = Screen.Win;
         Terminal.ClearScreen();
         ShowLevelReward();
+        Terminal.WriteLine("Type menu to return to the Menu.");
     }
 
     void ShowLevelReward()
@@ -115,40 +127,45 @@ public class Hacker : MonoBehaviour {
         switch (level)
         {
             case 1:
-        Terminal.WriteLine("Congratulations, Dave.");
-                // Write line allows for this ASCII art as a hack but it's not the normal way that you would it into your game. You'd be better off making it with the Unity UI.
-                Terminal.WriteLine(@"
-
--_-
-
-
-                                   ");
+                Terminal.WriteLine("Congratulations, Dave.");
+                ASCIIart1();
                 break;
             case 2:
                 Terminal.WriteLine("Just what do you think you're doing, Dave?");
-                Terminal.WriteLine(@"
-
-^    ^    ^   ^
-| | | | | | | |
- * * * * * * * 
-| | | | | | | |
-|_____________|
-
-                                   ");
+                ASCIIart2();
                 break;
             case 3:
                 Terminal.WriteLine("Dave, stop. Stop, will you? Stop, Dave. Will you stop, Dave? Stop, Dave. I'm afraid. ");
-                Terminal.WriteLine(@"
-
-$$$$$$$
-
-
-                                   ");
+                ASCIIart3();
                 break;
             default:
                 Debug.LogError("Panic! This is not a valid win state.");
                 break;
         }
 
+    }
+
+    private static void ASCIIart1()
+    {
+        // Write line allows for this ASCII art as a hack but it's not the normal way that you would it into your game. You'd be better off making it with the Unity UI.
+        Terminal.WriteLine(@"
+-_-
+                                   ");
+    }
+    private static void ASCIIart2()
+    {
+        Terminal.WriteLine(@"
+^    ^    ^   ^
+| | | | | | | |
+ * * * * * * * 
+| | | | | | | |
+|_____________|
+                                   ");
+    }
+    private static void ASCIIart3()
+    {
+        Terminal.WriteLine(@"
+$$$$$$$
+                                   ");
     }
 }
