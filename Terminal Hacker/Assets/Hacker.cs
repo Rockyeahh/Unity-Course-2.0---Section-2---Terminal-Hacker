@@ -43,6 +43,11 @@ public class Hacker : MonoBehaviour {
         {
             ShowMainMenu();
         }
+        else if (input == "quit" ||input == "exit" || input == "close")
+        {
+            Application.Quit();
+            Terminal.WriteLine("Dave, exit the web browser by pressing the X symbol.");
+        }
         else if (currentScreen == Screen.MainMenu)
         {
             RunMainMenu(input);
@@ -60,9 +65,7 @@ public class Hacker : MonoBehaviour {
         {
             level = int.Parse(input); // What is Parse? Why use it?
             AskForPassword();
-        }
-
-        else if (input == "HAL") // Easter egg.
+        } else if (input == "HAL") // Easter egg.
         {
             Terminal.WriteLine("Good morning, Dave.");
         }
