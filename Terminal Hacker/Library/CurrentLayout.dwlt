@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 583, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 111
+  controlID: 112
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -474,9 +474,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 28070000
     m_LastClickedID: 0
-    m_ExpandedIDs: feacffff94adffffc2afffff38bbffffc2bbfffff0bdffff46c3ffffdcc3ffff0ac6ffff90f2ffff26f3ffff54f5ffff96fbffff00000000622b00006c2b00008e2b0000
+    m_ExpandedIDs: 96fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -567,11 +567,11 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Terminal
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Terminal
+  - Assets
   m_LastFoldersGridSize: 96
   m_LastProjectPath: G:\Learn To Code With Unity Course 2.0\Learn To Code With Unity
     projects\Section 2\Terminal Hacker\Unity-Course-2.0---Section-2---Terminal-Hacker\Terminal
@@ -579,8 +579,8 @@ MonoBehaviour:
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: ec290000
-    m_LastClickedID: 10732
+    m_SelectedIDs: 8e290000
+    m_LastClickedID: 10638
     m_ExpandedIDs: 000000008e290000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
