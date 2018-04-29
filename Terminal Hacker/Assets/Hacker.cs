@@ -29,7 +29,7 @@ public class Hacker : MonoBehaviour {
     private static void MainMenuTextDisplay()
     {
         Terminal.WriteLine("Hello, Dave.");
-        Terminal.WriteLine("Welcome to Terminal Hacker, human.");
+        Terminal.WriteLine("Welcome to Terminal Hacker.");
         Terminal.WriteLine("Press 1 An MPs email passwords");
         Terminal.WriteLine("Press 2 Brenda's laptop");
         Terminal.WriteLine("Press 3 Money Corp Server");
@@ -65,7 +65,7 @@ public class Hacker : MonoBehaviour {
         {
             level = int.Parse(input); // What is Parse? Why use it?
             AskForPassword();
-        } else if (input == "HAL") // Easter egg.
+        } else if (input == "Hello HAL") // Easter egg.
         {
             Terminal.WriteLine("Good morning, Dave.");
         }
@@ -134,11 +134,11 @@ public class Hacker : MonoBehaviour {
                 ASCIIart1();
                 break;
             case 2:
-                Terminal.WriteLine("Just what do you think you're doing, Dave?");
+                Terminal.WriteLine("Just what do you think you're doing,   Dave?");
                 ASCIIart2();
                 break;
             case 3:
-                Terminal.WriteLine("Dave, stop. Stop, will you? Stop, Dave. Will you stop, Dave? Stop, Dave. I'm afraid. ");
+                Terminal.WriteLine("Dave, stop. Stop, will you? Stop, Dave.Will you stop, Dave? Stop, Dave.        I'm afraid.");
                 ASCIIart3();
                 break;
             default:
@@ -168,7 +168,11 @@ public class Hacker : MonoBehaviour {
     private static void ASCIIart3()
     {
         Terminal.WriteLine(@"
-$$$$$$$
-                                   ");
+    $
+  $$$$$
+ $  $  $
+    $
+   $ $
+");
     }
 }
